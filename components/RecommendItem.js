@@ -51,7 +51,8 @@ class RecommendItem extends Component {
               <Left>
                 <Text
                   style={{fontWeight: 'bold', fontSize: 18, color: 'black'}}>
-                  {this.props.price != null ? this.props.price
+                  {this.props.price != null
+                    ? this.props.price
                         .toString()
                         .replace(/\B(?=(\d{3})+(?!\d))/g, '.')
                     : '0'}

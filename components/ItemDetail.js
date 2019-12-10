@@ -18,31 +18,16 @@ import {
   Right,
 } from 'native-base';
 export default class ItemDetail extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoading: true,
-      data: null,
-    };
-  }
-  componentDidMount() {
-    getData().then(data => {
-      this.setState({
-        isLoading: false,
-        data: data,
-      });
-    });
-  }
   _renderItem = ({item}) => {
     return (
       <Card style={{width: 250}}>
         <CardItem cardBody>
           <Image
             source={{
-              uri:
-                'https://s3-alpha-sig.figma.com/img/fa8e/67ba/3b6ab6a48ba742678fe3efd767c3bfc1?Expires=1576454400&Signature=Ly3aYKo7d1PcJUXjz-Qt5R0eLSaRG9AeON5S3AXdEgZLXuT5V2tTIt0beFEV6qUebEkZHuHejygdteW5Q8eAN7huJoGbnbgMCNcb2nUbn1iKX6cqmOmxPmk0r4Aib2qaIHpc-yveKkAUkzblI-bsmHwZK1SooDPUUAqRquGH0R4QbP8TqEAwWdex3VCu7HRq9sjmPCGJ1V7p2WsIWlNwFxDvXtGrYWNDZ6hIUFF6SmmQKjNBf8xz1UPQSD9aidFXSTt1s0347PpP5xfuqOUZPOOvXH7I8ZtGljiANAgE1F-sZX~cWEbFj2zdpG6SBUjyKRc8cBNOzNZ8c7rMKdKL5g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA',
+              uri: `${item.image}`,
             }}
             style={{height: 180, width: 250}}
+            resizeMode="contain"
           />
         </CardItem>
         <CardItem style={{alignItems: 'flex-start', flexDirection: 'column'}}>
@@ -68,6 +53,8 @@ export default class ItemDetail extends Component {
   render() {
     const {navigation} = this.props;
     const item = navigation.getParam('item');
+    const data = navigation.getParam('data');
+    console.log(data);
     return (
       <ScrollView style={{flex: 1, backgroundColor: '#E5E5E5'}}>
         <Image
@@ -284,7 +271,7 @@ export default class ItemDetail extends Component {
           <Text style={{fontSize: 20, lineHeight: 24}}>Sản phẩm liên quan</Text>
           <FlatList
             horizontal={true}
-            data={this.state.data}
+            data={data}
             renderItem={this._renderItem}
             keyExtractor={item => item.list_id.toString()}
           />

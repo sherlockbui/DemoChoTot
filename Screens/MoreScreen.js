@@ -16,6 +16,7 @@ import {
   Alert,
   FlatList,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import Category from '../components/Category';
 import {articles_url, api_key} from '../config/rest_config';
@@ -39,7 +40,7 @@ class MoreScreen extends Component {
     });
   }
   render() {
-    console.log(this.state.data);
+    const {isLoading} = this.state;
     return (
       <View style={{flex: 1, padding: 10}}>
         <View>
@@ -62,13 +63,14 @@ class MoreScreen extends Component {
           }}>
           Có thể bạn quan tâm
         </Text>
+        <ActivityIndicator size="large" color ="red" animating= {isLoading}/>
         <View>
           <FlatList
             data={this.state.data}
             renderItem={({item}) => (
               <TouchableOpacity
                 onPress={() =>
-                  this.props.navigation.navigate('ItemDetail', {item})
+                  this.props.navigation.navigate('ItemDetail', {item,data:this.state.data})
                 }>
                 <RecommendItem
                 image = {item.image}

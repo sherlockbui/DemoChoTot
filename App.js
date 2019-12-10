@@ -28,7 +28,7 @@ const App = () => {
 };
 const BottomTabNavigator = createBottomTabNavigator(
   {
-'Đi Chợ': MarketScreen,
+    'Đi Chợ': MarketScreen,
     Chat: ChatScreen,
     'Thông Báo': NotificationScreen,
     Thêm: MoreScreen,

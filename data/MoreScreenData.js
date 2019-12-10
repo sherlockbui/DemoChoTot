@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-vars */
 import {articles_url} from '../config/rest_config';
